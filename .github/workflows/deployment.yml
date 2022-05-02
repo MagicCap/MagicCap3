@@ -18,4 +18,5 @@ jobs:
 
   darwin-build:
     needs: linux-build
-    steps: []
+    steps:
+      - uses: actions/checkout@v2
