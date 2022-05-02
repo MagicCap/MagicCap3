@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "globals": {
+        "globalThis": false
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "@typescript-eslint/no-var-requires": 0, // reason: hot reloading code
+        "@typescript-eslint/no-explicit-any": 0, // reason: some things require being any'd
+        "@typescript-eslint/ban-ts-comment": 0, // reason: required for uploader icons/a few tiny hacks
+        "@typescript-eslint/no-empty-function": 0, // reason: sometimes this is faster and looks clean
+        "@typescript-eslint/no-non-null-assertion": 0, // reason: I don't even get why this is a rule, if it's a big issue, should be an exception
+        "prefer-const": 0, // reason: doesn't seem to play nicely with react states
+        "semi": "error", // reason: remove code ambiguity
+        "comma-dangle": "error" // reason: make diffs cleaner
+    }
+}

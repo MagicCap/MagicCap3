@@ -1,0 +1,52 @@
+$toolbox-item-width: 8ch;
+$toolbox-item-height: 6ch;
+
+.toolbox {
+    position: fixed;
+    left: 50%;
+    z-index: 100;
+    transform: translateX(-50%);
+
+    .selected {
+        background-color: rgb(49, 49, 204);
+    }
+
+    span:first-of-type {
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 10%;
+    }
+
+    span:last-of-type {
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 10%;
+    }
+
+    span {
+        background-color: #404050;
+        display: inline-block;
+        width: $toolbox-item-width;
+        height: $toolbox-item-height;
+        text-align: center;
+
+        input {
+            -webkit-appearance: none;
+	        border: none;
+            margin-top: 11% !important;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+
+        img, input {
+            margin-left: calc(($toolbox-item-width - $toolbox-item-height) / 2);
+            margin-right: calc(($toolbox-item-width - $toolbox-item-height) / 2);
+            height: 70%;
+            margin-top: 10%;
+        }
+    }
+}
