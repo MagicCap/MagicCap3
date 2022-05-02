@@ -15,7 +15,7 @@ jobs:
         with:
           go-version: ">=1.17"
       - name: Install Linux development dependencies
-        run: apt install -y libappindicator3-dev libxtst-dev libpng++-dev
+        run: sudo apt install -y libappindicator3-dev libxtst-dev libpng++-dev
       - name: Run the build script
         run: make linux-ci
 
