@@ -30,6 +30,5 @@ jobs:
 
   darwin-build:
     runs-on: macos-11
-    needs: linux-build
     steps:
       - uses: actions/checkout@v2
