@@ -8,6 +8,7 @@ on:
 
 jobs:
   linux-build:
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v3
@@ -17,6 +18,7 @@ jobs:
         run: make linux-ci
 
   darwin-build:
+    runs-on: macos-11
     needs: linux-build
     steps:
       - uses: actions/checkout@v2
