@@ -15,7 +15,7 @@ jobs:
         with:
           go-version: ">=1.17"
       - name: Install Linux development dependencies
-        run: sudo apt install -y libappindicator3-dev libxtst-dev libpng++-dev libxkbcommon-x11-0 libx11-dev
+        run: sudo apt install -y libappindicator3-dev libxtst-dev libpng++-dev libxkbcommon-x11-0 xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libx11-dev
       - name: Run the build script
         run: make linux-ci
 
