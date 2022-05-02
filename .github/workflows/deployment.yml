@@ -18,6 +18,15 @@ jobs:
         run: sudo apt install -y libappindicator3-dev libxtst-dev libpng++-dev libxkbcommon-x11-0 xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libx11-dev
       - name: Run the build script
         run: make linux-ci
+      - uses: actions/upload-artifact@v3
+        with:
+          name: MagicCap-3.0.0-1.amd64.rpm
+          path: bundles/MagicCap-3.0.0-1.amd64.rpm
+      - uses: actions/upload-artifact@v3
+        with:
+          name: magiccap_3.0.0_amd64.deb
+          path: bundles/magiccap_3.0.0_amd64.deb
+      # TODO: upload to package mirrors
 
   darwin-build:
     runs-on: macos-11
