@@ -36,8 +36,6 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: ">=1.17"
-      - name: Install Macintosh development dependencies
-        run: HOMEBREW_NO_AUTO_UPODATE=1 brew install go node
       - name: Copy the certificate into the keychain
         run: build/scripts/copy_certificate.sh
         env:
