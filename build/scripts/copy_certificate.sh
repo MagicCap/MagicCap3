@@ -1,7 +1,7 @@
 #!/bin/sh
 # Heavily based off http://svilar.me/2015/codesign-electron-continuous-integration/. Thanks for the article, you saved my shit. <3
 
-set -ev
+set -ex
 
 KEY_CHAIN=~$HOME/certs.keychain
 
