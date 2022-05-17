@@ -137,7 +137,7 @@ endif
 package:
 ifeq ($(UNAME_S),Darwin)
 	# Package as a .dmg.
-	node_modules/.bin/electron-installer-dmg bundles/MagicCap.app --out bundles --title MagicCap
+	node_modules/.bin/electron-installer-dmg --out=bundles --title=MagicCap bundles/MagicCap.app MagicCap
 else
 	# Package as a .deb.
 	mv bundles/MagicCap-linux-$(NODE_ARCH)/MagicCap bundles/MagicCap-linux-$(NODE_ARCH)/magiccap
@@ -176,7 +176,7 @@ darwin-ci:
 	aws s3 sync app_inners.zip s3://$(S3_BUCKET)/darwin/$(shell cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
 
 	# Insert to the commit table.
-	COMMIT_HASH=$(shell cat dist/commit_hash) DARWIN_CDN_URL=https://cdn.magiccap.org/darwin/$(shell cat dist/commit_hash).zip API_KEY=$(API_KEY) node ./build/scripts/push_to_updater.js
+	COMMIT_HASH=$(shell cat dist/commit_hash) UPDATE_TYPE=$(shell git rev-parse --abbrev-ref HEAD | tr -d '\n') DARWIN_CDN_URL=https://cdn.magiccap.org/darwin/$(shell cat dist/commit_hash).zip API_KEY=$(API_KEY) node ./build/scripts/push_to_updater.js
 
 linux-ci:
 	make

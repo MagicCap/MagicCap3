@@ -29,6 +29,24 @@ jobs:
       # TODO: upload to package mirrors
 
   darwin-build:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
+      - name: Install Macintosh development dependencies
+        run: HOMEBREW_NO_AUTO_UPODATE=1 brew install go node
+      - name: Copy the certificate into the keychain
+        run: build/scripts/copy_certificate.sh
+        env:
+          P12_DATA: ${{ env.P12_DATA }}
+      - name: Run the build/deploy script
+        run: make darwin-ci
+        env:
+          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET: ${{ env.S3_BUCKET }}
+          S3_ENDPOINT: ${{ env.S3_ENDPOINT }}
+          API_KEY: ${{ env.API_KEY }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: MagicCap.dmg
+          path: bundles/MagicCap.dmg
