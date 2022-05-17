@@ -3,7 +3,7 @@
 
 set -ex
 
-KEY_CHAIN=~./certs.keychain
+KEY_CHAIN=$HOME/certs.keychain
 
 security create-keychain -p runner $KEY_CHAIN
 # Make the keychain the default so identities are found
