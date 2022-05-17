@@ -1,6 +1,8 @@
 #!/bin/sh
 # Heavily based off http://svilar.me/2015/codesign-electron-continuous-integration/. Thanks for the article, you saved my shit. <3
 
+set -e
+
 KEY_CHAIN=~/certs.keychain
 
 security create-keychain -p circle $KEY_CHAIN
