@@ -17,6 +17,6 @@ security set-keychain-settings -t 3600 -u $KEY_CHAIN
 echo $P12_DATA | base64 --decode - > ./Certificates.p12
 
 # Add certificates to keychain and allow codesign to access them
-security import ./Certificates.p12 -k $KEY_CHAIN -P "" -T /usr/bin/codesign
+security import ./Certificates.p12 -k $KEY_CHAIN -P runner -T /usr/bin/codesign
 
 rm ./Certificates.p12
