@@ -41,15 +41,15 @@ jobs:
       - name: Copy the certificate into the keychain
         run: build/scripts/copy_certificate.sh
         env:
-          P12_DATA: "${{ env.P12_DATA }}"
+          P12_DATA: ${{ secrets.P12_DATA }}
       - name: Run the build/deploy script
         run: make darwin-ci
         env:
-          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
-          S3_BUCKET: ${{ env.S3_BUCKET }}
-          S3_ENDPOINT: ${{ env.S3_ENDPOINT }}
-          API_KEY: ${{ env.API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+          API_KEY: ${{ secrets.API_KEY }}
       - uses: actions/upload-artifact@v3
         with:
           name: MagicCap.dmg
