@@ -41,7 +41,7 @@ jobs:
       - name: Copy the certificate into the keychain
         run: build/scripts/copy_certificate.sh
         env:
-          P12_DATA: ${{ env.P12_DATA }}
+          P12_DATA: "${{ env.P12_DATA }}"
       - name: Run the build/deploy script
         run: make darwin-ci
         env:
