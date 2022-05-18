@@ -55,20 +55,20 @@ function hashContents(hash, fp) {
 // causing a bunch of collateral updates.
 function generateCoreHash() {
     // Open the package.json.
-    const package = require("./package.json");
+    const packageJson = require("./package.json");
 
     // Create a hashing context.
     const hash = require("crypto").createHash("sha256");
 
     // Flat map the dependencies in a sorted order.
-    Object.keys(package.dependencies).sort().forEach(key => {
-        const value = JSON.stringify(package.dependencies[key]);
+    Object.keys(packageJson.dependencies).sort().forEach(key => {
+        const value = JSON.stringify(packageJson.dependencies[key]);
         hash.update(key);
         hash.update(value);
     });
 
     // Add the electron version to the hash.
-    hash.update(package.devDependencies.electron);
+    hash.update(packageJson.devDependencies.electron);
 
     // Hash all other relevant folders.
     hashContents(hash, "./assets");
