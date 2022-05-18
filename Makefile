@@ -7,7 +7,7 @@ ELECTRON_PACKAGER_LINUX_ARGS := --icon assets/icon.icns
 
 YARN := npm_config_yes=true npx yarn
 
-.PHONY: build package darwin-app-sign update-pusher darwin-ci linux-ci dev
+.PHONY: build package darwin-app-sign update-pusher darwin-s3-inners-push darwin-ci linux-ci dev
 
 build:
 	# Build all of the assets and JavaScript.
@@ -162,6 +162,9 @@ darwin-app-sign:
 		--binaries bundles/MagicCap.app/Contents/Resources/app-arm64/dist/sftp \
 		--binaries bundles/MagicCap.app/Contents/Resources/app-x64/dist/sftp
 
+darwin-s3-inners-push:
+	aws s3 sync dist/app_inners.zip s3://$(S3_BUCKET)/darwin/$(shell cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
+
 update-pusher:
 	COMMIT_HASH=$(shell cat dist/commit_hash) UPDATE_TYPE=$(shell git rev-parse --abbrev-ref HEAD | tr -d '\n') DARWIN_CDN_URL=https://cdn.magiccap.org/darwin/$(shell cat dist/commit_hash).zip API_KEY=$(API_KEY) node ./build/scripts/push_to_updater.js
 
@@ -176,7 +179,7 @@ darwin-ci:
 	cd bundles/MagicCap.app && zip -r ../../dist/app_inners.zip .
 
 	# Push the commit to S3.
-	aws s3 sync dist/app_inners.zip s3://$(S3_BUCKET)/darwin/$(cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
+	make darwin-s3-inners-push
 
 	# Run the update pusher.
 	make update-pusher
