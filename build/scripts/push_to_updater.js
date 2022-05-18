@@ -55,7 +55,7 @@ function hashContents(hash, fp) {
 // causing a bunch of collateral updates.
 function generateCoreHash() {
     // Open the package.json.
-    const package = require(`${__dirname}/package.json`);
+    const package = require("./package.json");
 
     // Create a hashing context.
     const hash = require("crypto").createHash("sha256");

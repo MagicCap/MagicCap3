@@ -176,7 +176,7 @@ darwin-ci:
 	cd bundles/MagicCap.app && zip -r ../../dist/app_inners.zip .
 
 	# Push the commit to S3.
-	aws s3 sync app_inners.zip s3://$(S3_BUCKET)/darwin/$(cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
+	aws s3 sync dist/app_inners.zip s3://$(S3_BUCKET)/darwin/$(cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
 
 	# Run the update pusher.
 	make update-pusher
