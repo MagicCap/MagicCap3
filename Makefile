@@ -163,7 +163,7 @@ darwin-app-sign:
 		--binaries bundles/MagicCap.app/Contents/Resources/app-x64/dist/sftp
 
 darwin-s3-inners-push:
-	aws s3 sync dist/app_inners.zip s3://$(S3_BUCKET)/darwin/$(shell cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
+	aws s3 cp dist/app_inners.zip s3://$(S3_BUCKET)/darwin/$(shell cat dist/commit_hash).zip --endpoint=$(S3_ENDPOINT) --acl public-read
 
 update-pusher:
 	COMMIT_HASH=$(shell cat dist/commit_hash) UPDATE_TYPE=$(shell git rev-parse --abbrev-ref HEAD | tr -d '\n') DARWIN_CDN_URL=https://cdn.magiccap.org/darwin/$(shell cat dist/commit_hash).zip API_KEY=$(API_KEY) node ./build/scripts/push_to_updater.js
