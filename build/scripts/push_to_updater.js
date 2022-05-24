@@ -8,6 +8,7 @@
 const fetch = require("node-fetch");
 const FormData = require("form-data");
 const { readFileSync, statSync, readdirSync } = require("fs");
+const { join } = require("path");
 
 // Check the env vars.
 const commitHash = process.env.COMMIT_HASH;
@@ -55,7 +56,7 @@ function hashContents(hash, fp) {
 // causing a bunch of collateral updates.
 function generateCoreHash() {
     // Open the package.json.
-    const packageJson = require("./package.json");
+    const packageJson = require(`${join(__dirname, "..", "..")}/package.json`);
 
     // Create a hashing context.
     const hash = require("crypto").createHash("sha256");
@@ -99,8 +100,8 @@ fetch("https://api.magiccap.org/v1/updates/push", {
     method: "POST",
     body: form,
     headers: form.getHeaders({"Authorization": `Bearer ${apiKey}`}),
-}).then(x => {
-    if (!x.ok) throw new Error(`Failed to push to the updater (status code ${x.status}).`);
+}).then(async x => {
+    if (!x.ok) throw new Error(`Failed to push to the updater (status code ${x.status}). (${await x.text()})`);
 }).catch(err => {
     console.error(err);
     process.exit(1);
