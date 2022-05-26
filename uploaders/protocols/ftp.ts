@@ -39,5 +39,5 @@ export default async (
 
 export const category: Category = {
     name: "FTP uploaders",
-    description: "These are uploaders which use FTP to upload."
+    description: "These are uploaders which use FTP to upload.",
 };

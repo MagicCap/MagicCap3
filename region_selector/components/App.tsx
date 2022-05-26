@@ -78,7 +78,7 @@ export default () => {
                 height: bottomRight.y - topLeft.y,
                 width: bottomRight.x - topLeft.x,
                 relativeLeft: topLeft.x,
-                relativeTop: topLeft.y
+                relativeTop: topLeft.y,
             };
 
             // Send the body.
@@ -135,7 +135,7 @@ export default () => {
             editors.to.push({
                 imgUrl: URL.createObjectURL(new Blob([buf], {type: "image/png"})),
                 top: origin.relativeTop, left: origin.relativeLeft, width: origin.width,
-                height: origin.height
+                height: origin.height,
             });
             setEditors({to: editors.to});
         });
@@ -302,7 +302,7 @@ export default () => {
                     width: bottomRight.x - topLeft.x,
                     relativeLeft: topLeft.x,
                     relativeTop: topLeft.y,
-                    rgb
+                    rgb,
                 };
                 ipcRenderer.send(`selector:editor:${window.location.hash.substr(1)}`, payload);
             }
@@ -322,7 +322,7 @@ export default () => {
     return <div style={{
         position: "fixed", width: "100%", height: "100%", zIndex: -9999,
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imageUrl})`,
-        backgroundSize: "cover"
+        backgroundSize: "cover",
     }}>
         <Toolbox notch={notch} cursorPos={cursorPos} toolboxItems={toolboxItems} toolboxIndex={toolboxIndex} rgb={rgb} />
         <Crosshair cursorPos={cursorPos} />

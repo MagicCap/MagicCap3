@@ -38,7 +38,7 @@ const getCommits = async () => {
         readFile(join(root, "editors_commit")).then(x => x.toString()),
 
         // Get the selector commit.
-        readFile(join(root, "selector_commit")).then(x => x.toString())
+        readFile(join(root, "selector_commit")).then(x => x.toString()),
     ]);
 };
 
@@ -90,7 +90,7 @@ const coreUpdate = async (blob: CoreBlob): Promise<boolean> => {
                 "but MagicCap does not have permission. Would you like to " +
                 "update MagicCap now? Note that you may not be able to get " +
                 "future updates without this being up to date.",
-            buttons: ["Yes", "Not right now", "Don't ask again"]
+            buttons: ["Yes", "Not right now", "Don't ask again"],
         });
         switch (resp.response) {
             case 1: {
@@ -242,7 +242,7 @@ export default async () => {
             type: "question",
             title: "MagicCap",
             message: "Would you like MagicCap to periodically check for updates?",
-            buttons: ["Yes", "No"]
+            buttons: ["Yes", "No"],
         });
         database.setConfig("update_bits", resp.response === 0 ? 1 : 0);
     }

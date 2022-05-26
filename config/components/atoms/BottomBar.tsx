@@ -11,7 +11,7 @@ const buttons = [
     "Uploaders",
     "File Saving",
     "Hotkeys",
-    "General"
+    "General",
 ];
 
 const Button = styled.span`
@@ -44,11 +44,11 @@ export default ({currentlySelected, setCurrentlySelected}: BottomBarProps) => {
     return <div style={{
         backgroundColor: "rgb(18,18,16)", padding: "5px",
         display: "flex", justifyContent: "space-between",
-        flexShrink: 0
+        flexShrink: 0,
     }}>
         <span style={{
             flexFlow: "left", paddingLeft: "5px",
-            alignSelf: "center"
+            alignSelf: "center",
         }}>
             <Buttons currentlySelected={currentlySelected} setCurrentlySelected={setCurrentlySelected} />
         </span>

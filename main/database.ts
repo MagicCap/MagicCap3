@@ -17,7 +17,7 @@ const sqlOperations = [
     "CREATE UNIQUE INDEX IF NOT EXISTS capture_unique_ts ON captures (timestamp)",
 
     // Create the uploader tokens table.
-    "CREATE TABLE IF NOT EXISTS tokens (token TEXT NOT NULL, expires INTEGER NOT NULL, uploader TEXT NOT NULL)"
+    "CREATE TABLE IF NOT EXISTS tokens (token TEXT NOT NULL, expires INTEGER NOT NULL, uploader TEXT NOT NULL)",
 ];
 
 class Database implements ConfigInterface {
@@ -122,7 +122,7 @@ export class CaptureResult {
             filename: this.filename,
             success: this.success,
             timestamp: timestamp,
-            url: this.url
+            url: this.url,
         };
         for (const f of dispatchers) f(cap);
     }

@@ -22,7 +22,7 @@ export default ({title, content, onComplete}: EditorProps) => {
             style={{
                 width: "100%",
                 height: "40vh",
-                marginBottom: "20px"
+                marginBottom: "20px",
             }}
         />
         <Button alt="Save Changes" color="#1670C4" whiteText={true} onClick={() => onComplete(text)}>

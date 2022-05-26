@@ -14,18 +14,18 @@ export const ultrashare: Uploader = {
             name: "Hostname",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "ultra_key",
             name: "Key",
             type: "password",
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "{ultra_host}/api/upload", "POST",
         {type: "raw"}, {Authorization: "{ultra_key}", fileext: "{ext}", "User-Agent": "MagicCapUltraShare/1.0"},
-        config, "%url%", data, filename)
+        config, "%url%", data, filename),
 };

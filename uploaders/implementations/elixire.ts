@@ -14,11 +14,11 @@ export const elixire: Uploader = {
             name: "Token",
             type: "password",
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://elixi.re/api/upload", "POST",
         {type: "multipart", key: "f"}, {Authorization: "{elixire_token}"},
-        config, "%url%", data, filename)
+        config, "%url%", data, filename),
 };

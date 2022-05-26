@@ -51,7 +51,7 @@ Promise.all([
         } catch (_) {
             // Ignore this error.
         }
-    })()
+    })(),
 ]).then(([localBundle, lastBundle]) => {
     // Defines the main path.
     const mainPath = join(root, "main.js");

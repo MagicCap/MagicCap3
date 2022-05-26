@@ -70,7 +70,7 @@ export const databaseMigration = (database: ConfigInterface) => {
             // Transform the key into the new format.
             const newKey = JSON.stringify({
                 expiresAt, token,
-                refreshToken: database.getConfig("google_drive_refresh_token")
+                refreshToken: database.getConfig("google_drive_refresh_token"),
             });
             database.setConfig("google_drive_token", newKey);
             database.setConfig("google_drive_refresh_token", undefined);

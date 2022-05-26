@@ -16,9 +16,9 @@ export const sharex: Uploader = {
             type: "json",
             required: true,
             extensions: ["sxcu"],
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => sxcu(
-        data, filename, config.get("sxcu_data"))
+        data, filename, config.get("sxcu_data")),
 };

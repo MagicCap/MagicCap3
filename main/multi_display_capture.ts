@@ -30,8 +30,8 @@ export default async(): Promise<Buffer> => {
     const canvas = sharp({
         create: {
             width, height, background: {r: 0, g: 0, b: 0, alpha: 1},
-            channels: 4
-        }
+            channels: 4,
+        },
     });
 
     // Add all the screenshots and return the sharp result.
@@ -42,7 +42,7 @@ export default async(): Promise<Buffer> => {
         return {
             input: buf,
             left: x,
-            top: y
+            top: y,
         };
     })).toFormat("png").toBuffer();
 };

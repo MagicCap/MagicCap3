@@ -9,9 +9,9 @@ const application = {
             click: () => {
                 app.quit();
                 process.exit(0);
-            }
-        }
-    ]
+            },
+        },
+    ],
 };
 
 const edit = {
@@ -20,37 +20,37 @@ const edit = {
         {
             label: "Undo",
             accelerator: "CmdOrCtrl+Z",
-            selector: "undo:"
+            selector: "undo:",
         },
         {
             label: "Redo",
             accelerator: "Shift+CmdOrCtrl+Z",
-            selector: "redo:"
+            selector: "redo:",
         },
         {
-            type: "separator"
+            type: "separator",
         },
         {
             label: "Cut",
             accelerator: "CmdOrCtrl+X",
-            selector: "cut:"
+            selector: "cut:",
         },
         {
             label: "Copy",
             accelerator: "CmdOrCtrl+C",
-            selector: "copy:"
+            selector: "copy:",
         },
         {
             label: "Paste",
             accelerator: "CmdOrCtrl+V",
-            selector: "paste:"
+            selector: "paste:",
         },
         {
             label: "Select All",
             accelerator: "CmdOrCtrl+A",
-            selector: "selectAll:"
-        }
-    ]
+            selector: "selectAll:",
+        },
+    ],
 };
 
 // @ts-ignore

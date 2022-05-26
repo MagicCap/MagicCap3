@@ -14,18 +14,18 @@ export const shutter: Uploader = {
             name: "ID",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "shtr_token",
             name: "Token",
             type: "password",
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://shutter.host/api/upload", "POST",
         {type: "multipart", key: "file"}, {Authorization: "{shtr_id}:{shtr_token}"},
-        config, "%url%", data, filename)
+        config, "%url%", data, filename),
 };

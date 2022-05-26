@@ -26,5 +26,5 @@ export const hollowRectangle = (ctx: EditorRegisterCtx): (() => void) => ctx.reg
     title: "Hollow Rectangle",
     description: "Creates a hollow rectangle on the image.",
     index: 5,
-    icon
+    icon,
 }, cb);

@@ -15,14 +15,14 @@ export const dropbox: Uploader = {
             name: "Client ID",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "dropbox_client_secret",
             name: "Client Secret",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "dropbox_path",
@@ -30,14 +30,14 @@ export const dropbox: Uploader = {
             type: "text",
             required: true,
             default: "/",
-            secret: false
+            secret: false,
         },
         {
             key: "dropbox_link_password",
             name: "Link Password (Requires Paid Dropbox)",
             type: "password",
             required: false,
-            secret: true
+            secret: true,
         },
         {
             key: "dropbox_token",
@@ -77,8 +77,8 @@ export const dropbox: Uploader = {
                 return body.access_token as string;
             },
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: async (config: Map<string, any>, data: Buffer, filename: string) => {
         // Get the dropbox path.
@@ -93,9 +93,9 @@ export const dropbox: Uploader = {
             headers: {
                 Authorization: `Bearer ${config.get("dropbox_token") as string}`,
                 "Content-Type": "application/octet-stream",
-                "Dropbox-API-Arg": JSON.stringify({path: dropboxPath})
+                "Dropbox-API-Arg": JSON.stringify({path: dropboxPath}),
             },
-            body: data
+            body: data,
         }).then(async res => {
             if (!res.ok) throw new Error(`Request returned status code ${res.status} (${await res.text()})`);
         });
@@ -104,15 +104,15 @@ export const dropbox: Uploader = {
         const dropboxLinkPassword = config.get("dropbox_link_password") as string;
         const dropboxSettings = {
             requested_visibility: dropboxLinkPassword ? "password" : "public",
-            link_password: dropboxLinkPassword ? dropboxLinkPassword : null
+            link_password: dropboxLinkPassword ? dropboxLinkPassword : null,
         };
         const dropboxResult = await fetch("https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${config.get("dropbox_token") as string}`,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({path: dropboxPath, settings: dropboxSettings})
+            body: JSON.stringify({path: dropboxPath, settings: dropboxSettings}),
         }).then(async res => {
             if (!res.ok) throw new Error(`Request returned status code ${res.status} (${await res.text()})`);
             return await res.json();
@@ -121,5 +121,5 @@ export const dropbox: Uploader = {
         // Return the URL if present.
         if (!dropboxResult.url) throw new Error("No URL provided.");
         return dropboxResult.url as string;
-    }
+    },
 };

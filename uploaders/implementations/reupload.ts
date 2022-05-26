@@ -14,11 +14,11 @@ export const reupload: Uploader = {
             name: "Token",
             type: "password",
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://api.reupload.gg/v1/upload/image", "POST",
         {type: "multipart", key: "file"}, {Authorization: "Bearer {reupload_token}"},
-        config, "%url%", data, filename)
+        config, "%url%", data, filename),
 };

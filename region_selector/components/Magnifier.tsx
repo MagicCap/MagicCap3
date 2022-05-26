@@ -64,7 +64,7 @@ export default ({cursorPos, imageUrl, displayBounds, scale}: MagnifierProps) => 
         <div style={{
             margin: "3px", paddingTop: "3px", paddingBottom: "3px",
             backgroundColor: "black", color: "white", textAlign: "center",
-            borderRadius: "15%", fontFamily: "Arial"
+            borderRadius: "15%", fontFamily: "Arial",
         }}>
             <p>X: {cursorPos.x * scale} | Y: {cursorPos.y * scale}</p>
         </div>

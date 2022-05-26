@@ -27,7 +27,7 @@ export const configInit = async () => {
             } catch (_) {
                 // Ignore this error.
             }
-        })()
+        })(),
     ]);
     if (localBundle !== lastBundle) {
         // In this situation, we should write our local bundle.
@@ -78,8 +78,8 @@ export default () => {
         show: false,
         vibrancy: "appearance-based",
         webPreferences: {
-            preload: `${__MAGICCAP_DIST_FOLDER__}/config_preload.js`
-        }
+            preload: `${__MAGICCAP_DIST_FOLDER__}/config_preload.js`,
+        },
     });
     win.loadFile(`${join(homedir(), ".magiccap")}/config.html`);
     if (process.env.NODE_ENV === "development") win.webContents.openDevTools({

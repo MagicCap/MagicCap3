@@ -18,14 +18,14 @@ export const gdrive: Uploader = {
             name: "Client ID",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "gdrive_client_secret",
             name: "Client Secret",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "gdrive_token",
@@ -55,8 +55,8 @@ export const gdrive: Uploader = {
                 const resp = await fetch(u.toString(), {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    }
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
                 }).then(async res => {
                     if (!res.ok) throw new Error(`Request returned status code ${res.status}`);
                     return await res.json();
@@ -65,12 +65,12 @@ export const gdrive: Uploader = {
                 // Return the JSON string.
                 return JSON.stringify({
                     expiresAt: Math.floor((new Date() as unknown) as number / 1000) + resp.expires_in, token: resp.access_token,
-                    refreshToken: resp.refresh_token
+                    refreshToken: resp.refresh_token,
                 });
             },
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: async (config: Map<string, any>, data: Buffer, filename: string) => {
         // Get the token.
@@ -93,8 +93,8 @@ export const gdrive: Uploader = {
             const resp = await fetch(u.toString(), {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                }
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
             }).then(async res => {
                 if (!res.ok) throw new Error(`Request returned status code ${res.status}`);
                 return await res.json();
@@ -107,7 +107,7 @@ export const gdrive: Uploader = {
 
             // Update the config.
             config.set("gdrive_token", JSON.stringify({
-                expiresAt, token, refreshToken
+                expiresAt, token, refreshToken,
             }));
         }
 
@@ -116,7 +116,7 @@ export const gdrive: Uploader = {
         oauth.setCredentials({access_token: token});
         const d = drive({
             version: "v3",
-            auth: oauth
+            auth: oauth,
         });
         const mimeType = mime.lookup(filename.split(".").pop()!);
 
@@ -124,12 +124,12 @@ export const gdrive: Uploader = {
         const driveResponse = await d.files.create({
             requestBody: {
                 name: filename,
-                mimeType
+                mimeType,
             },
             media: {
                 mimeType,
-                body: streamifier.createReadStream(data)
-            }
+                body: streamifier.createReadStream(data),
+            },
         });
 
         // Handle the permission.
@@ -139,12 +139,12 @@ export const gdrive: Uploader = {
             fileId: driveResponse.data.id,
             resource: {
                 role: "reader",
-                type: "anyone"
+                type: "anyone",
             },
-            fields: "id"
+            fields: "id",
         });
 
         // Return the URL.
         return `https://drive.google.com/file/d/${driveResponse.data.id}/view?usp=sharing`;
-    }
+    },
 };

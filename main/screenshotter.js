@@ -12,7 +12,7 @@ class Screenshotter {
         if (notch !== undefined) console.log("found notch info (pixel offset):", notch);
         return {
             image: await sharp(libScreenshot(display.bounds.x, display.bounds.y, thumbnailSize.width, thumbnailSize.height), {raw: thumbnailSize}).toFormat("png").toBuffer(),
-            notch: notch || 0
+            notch: notch || 0,
         };
     }
 
@@ -23,7 +23,7 @@ class Screenshotter {
     static getThumbnailSize(display) {
         return {
             width: display.size.width * display.scaleFactor,
-            height: display.size.height * display.scaleFactor
+            height: display.size.height * display.scaleFactor,
         };
     }
 }

@@ -15,14 +15,14 @@ export const s3: Uploader = {
             name: "Access Key ID",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "s3_secret_access_key",
             name: "Secret Access Key",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "s3_endpoint",
@@ -30,25 +30,25 @@ export const s3: Uploader = {
             type: "url",
             required: true,
             default: "https://s3.eu-west-2.amazonaws.com",
-            secret: false
+            secret: false,
         },
         {
             key: "s3_bucket_name",
             name: "Bucket Name",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "s3_bucket_url",
             name: "Bucket URL",
             type: "url",
             required: true,
-            secret: false
-        }
+            secret: false,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => s3Proto(
         config.get("s3_access_key_id"), config.get("s3_secret_access_key"),
         config.get("s3_endpoint"), config.get("s3_bucket_name"),
-        config.get("s3_bucket_url"), data, filename)
+        config.get("s3_bucket_url"), data, filename),
 };

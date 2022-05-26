@@ -4,29 +4,29 @@ module.exports = {
     target: 'electron-main',
     externals: {
         sharp: 'root Sharp',
-        'better-sqlite3': 'root BetterSQLite3'
+        'better-sqlite3': 'root BetterSQLite3',
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader'
+                loader: 'ts-loader',
             },
             {
                 test: /\.css$/,
-                loader: 'css-loader'
+                loader: 'css-loader',
             },
             {
                 test: /\.s[ac]ss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(png|svg)$/,
-                loader: 'buffer-loader'
-            }
-        ]
+                loader: 'buffer-loader',
+            },
+        ],
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.jsx', '.json']
-    }
+        extensions: ['.js', '.ts', '.tsx', '.jsx', '.json'],
+    },
 };

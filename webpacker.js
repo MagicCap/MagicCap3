@@ -85,7 +85,7 @@ function webpackModule(moduleName) {
                 // Log the result.
                 if (stats) console.log(stats.toString({
                     chunks: false,
-                    colors: true
+                    colors: true,
                 }));
 
                 // Error and return status code 1 if stats has errors.

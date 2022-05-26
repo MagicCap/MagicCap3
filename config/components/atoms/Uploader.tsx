@@ -114,7 +114,7 @@ export default ({back, uploader, uploaderId}: UploaderProps) => {
                     defaultIndex={option.default}
                     conditional={{
                         renderer: renderOption,
-                        options: option.conditional
+                        options: option.conditional,
                     }}
                 />;
             case "oauth2":
@@ -156,9 +156,9 @@ export default ({back, uploader, uploaderId}: UploaderProps) => {
                             setNotification({
                                 props: {
                                     backgroundColor: "#C41616",
-                                    textColor: "white"
+                                    textColor: "white",
                                 },
-                                text: "Not all uploader options are set."
+                                text: "Not all uploader options are set.",
                             });
                             return;
                         }
@@ -174,9 +174,9 @@ export default ({back, uploader, uploaderId}: UploaderProps) => {
                                     setNotification({
                                         props: {
                                             backgroundColor: "#C41616",
-                                            textColor: "white"
+                                            textColor: "white",
                                         },
-                                        text: "Not all uploader options are set."
+                                        text: "Not all uploader options are set.",
                                     });
                                     return;
                                 }
@@ -190,9 +190,9 @@ export default ({back, uploader, uploaderId}: UploaderProps) => {
                 setNotification({
                     props: {
                         backgroundColor: "#00A300",
-                        textColor: "white"
+                        textColor: "white",
                     },
-                    text: "Uploader successfully set as default"
+                    text: "Uploader successfully set as default",
                 });
             }}>
                 Set as Default Uploader

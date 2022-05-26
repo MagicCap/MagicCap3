@@ -55,10 +55,10 @@ const processUploadTo = (): MenuItemConstructorOptions[] => {
                 return {
                     type: "normal",
                     label: name,
-                    click: () => uploadTo(x.id)
+                    click: () => uploadTo(x.id),
                 } as MenuItemConstructorOptions;
-            })
-        }
+            }),
+        },
     ];
 };
 
@@ -78,7 +78,7 @@ export const remakeMenu = () => {
         {type: "separator"},
 
         {label: "Captures/Config", type: "normal", click: openConfig},
-        {label: "Quit", type: "normal", click: () => process.exit(0)}
+        {label: "Quit", type: "normal", click: () => process.exit(0)},
     ]);
 
     // Set the context menu.

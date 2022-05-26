@@ -72,7 +72,7 @@ export default (props: SelectedRegionProps) => {
             width: `${right - left}px`,
             height: `${bottom - top}px`,
             top: `${top}px`, left: `${left}px`,
-            boxSizing: "border-box", boxShadow: "0 0 0 300vmax rgba(0, 0, 0, 0.4)"
+            boxSizing: "border-box", boxShadow: "0 0 0 300vmax rgba(0, 0, 0, 0.4)",
         }} />
     </>;
 };

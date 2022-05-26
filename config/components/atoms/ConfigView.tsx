@@ -49,16 +49,16 @@ const validateType = (x: any, label: string, t: "" | 0, nullable: boolean) => {
     switch (t) {
         case "":
             if (typeof x !== "string") {
-                if (!nullable || x !== null) throw new Error("Type of " + label + " is not a string")
+                if (!nullable || x !== null) throw new Error("Type of " + label + " is not a string");
             }
             return x;
         case 0:
             if (typeof x !== "number") {
-                if (!nullable || x !== null) throw new Error("Type of " + label + " is not a number")
+                if (!nullable || x !== null) throw new Error("Type of " + label + " is not a number");
             }
             return x;
     }
-}
+};
 
 const loadJson = (goToCaptures: () => void) => {
     read([".json", "application/json"], async content => {
@@ -147,7 +147,7 @@ export default ({hide, goToCaptures}: ConfigViewProps) => {
             style={{
                 width: "100%",
                 height: "40vh",
-                marginBottom: "20px"
+                marginBottom: "20px",
             }}
         />
         <p>

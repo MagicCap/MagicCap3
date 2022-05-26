@@ -17,8 +17,8 @@ async function cb(ctx: EditorCtx): Promise<Buffer> {
             width: metadata.width,
             height: metadata.height,
             background: { r: rgb[0], g: rgb[1], b: rgb[2] },
-            channels: 4
-        }
+            channels: 4,
+        },
     }).png().toBuffer();
 }
 
@@ -26,5 +26,5 @@ export const rectangle = (ctx: EditorRegisterCtx): (() => void) => ctx.register(
     title: "Rectangle",
     description: "Creates a rectangle on the image.",
     index: 4,
-    icon
+    icon,
 }, cb);

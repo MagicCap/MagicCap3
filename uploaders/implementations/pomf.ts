@@ -14,17 +14,17 @@ export const pomf: Uploader = {
             name: "Domain",
             type: "url",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "pomf_token",
             name: "Token",
             type: "password",
             required: false,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http("{pomf_domain}", "POST",
         {type: "multipart", key: "files[]"}, {token: "{pomf_token}"},
-        config, "%files.0.url%", data, filename)
+        config, "%files.0.url%", data, filename),
 };

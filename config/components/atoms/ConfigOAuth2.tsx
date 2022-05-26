@@ -55,7 +55,7 @@ export default ({name, uploaderKey, configKey, authorizationUrl, clientIdKey, sc
                 return;
             }
             openOAuth2Flow(uploaderKey, configKey, {
-                authorizationUrl, clientId, scope, accessType
+                authorizationUrl, clientId, scope, accessType,
             }, async (err, res) => {
                 if (err) { 
                     setMessage(err);
@@ -102,7 +102,7 @@ export default ({name, uploaderKey, configKey, authorizationUrl, clientIdKey, sc
         <>OAuth2 token is set. <ColoredLink onClick={removeOAuth}>Click here to remove.</ColoredLink></>,
 
         // Displayed when a OAuth2 flow is in progress.
-        <>OAuth2 authentication in progress. <ColoredLink onClick={cancelOAuth}>Click here to cancel.</ColoredLink></>
+        <>OAuth2 authentication in progress. <ColoredLink onClick={cancelOAuth}>Click here to cancel.</ColoredLink></>,
     ];
 
     // Return all the parts.

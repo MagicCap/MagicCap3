@@ -3,7 +3,7 @@ import sharp from "sharp";
 import database from "./database";
 import {
     BundleBlob, ConfigInterface, EditorCtx, EditorDone,
-    EditorInfo, EditorInfoWithID, EditorRegisterCtx
+    EditorInfo, EditorInfoWithID, EditorRegisterCtx,
 } from "../sharedTypes";
 import { homedir } from "os";
 import { join } from "path";
@@ -33,7 +33,7 @@ export class BaseEditorCtx implements EditorCtx {
         return await sharp(this.buf).extract({
             left: relLeft,
             top: relTop,
-            width, height
+            width, height,
         }).toBuffer();
     }
 }
@@ -95,7 +95,7 @@ export const editorsInit = async () => {
             } catch (_) {
                 // Ignore this error.
             }
-        })()
+        })(),
     ]);
     if (localBundle !== lastBundle) {
         // In this situation, we should write our local bundle.

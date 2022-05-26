@@ -27,7 +27,7 @@ export default async (
             const form = new FormData();
             form.append(postAs.key, body, {
                 contentType: ((await fromBuffer(body)) || {mime: "application/octet-stream"}).mime,
-                filename
+                filename,
             });
             requestBody = form.getBuffer();
             contentType = form.getHeaders()["content-type"];
@@ -85,5 +85,5 @@ export default async (
 
 export const category: Category = {
     name: "HTTPS uploaders",
-    description: "These are uploaders which use HTTPS bodies to upload."
+    description: "These are uploaders which use HTTPS bodies to upload.",
 };

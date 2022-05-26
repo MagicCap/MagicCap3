@@ -3,7 +3,7 @@ module.exports = Object.assign({}, require("./webpack.common.js"), {
     output: {
         filename: "main.js",
         library: {
-            type: "commonjs"
-        }
-    }
+            type: "commonjs",
+        },
+    },
 });

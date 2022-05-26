@@ -67,7 +67,7 @@ const doPostCaptureWrites = (filename: string, buf: Buffer, res: CaptureResult) 
 
             // Call the uploader.
             res.url = await uploader.upload(configIsolate, buf, filename);
-        })()
+        })(),
     ]);
 };
 
@@ -119,19 +119,19 @@ export default async (ext: string, successMessage: string, buf: Buffer) => {
         // Create the notification object.
         const notification = new Notification({
             title: "MagicCap",
-            body: successMessage
+            body: successMessage,
         });
         if (res.url && res.filePath) {
             // If there is a file path and URL, we should add multiple actions to the notification.
             notification.actions = [
                 {
                     type: "button",
-                    text: "Open URL"
+                    text: "Open URL",
                 },
                 {
                     type: "button",
-                    text: "Open File"
-                }
+                    text: "Open File",
+                },
             ];
         }
 

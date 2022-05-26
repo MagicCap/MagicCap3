@@ -50,7 +50,7 @@ async function getUploaders(): Promise<{[id: string]: JSONableUploaderDetails}> 
                 if (copy.type === "oauth2") delete copy.callback;
                 return copy;
             }),
-            icon: uploader.icon.toString("base64")
+            icon: uploader.icon.toString("base64"),
         };
     });
     return o;
@@ -130,7 +130,7 @@ async function defaultFilePath(): Promise<string> {
 async function openFolder(_: any, win: BrowserWindow): Promise<string | null> {
     const open = await dialog.showOpenDialog(win, {
         title: "Open folder",
-        properties: ["createDirectory", "openDirectory"]
+        properties: ["createDirectory", "openDirectory"],
     });
     if (open.filePaths && open.filePaths.length !== 0) return open.filePaths[0];
     return null;
@@ -167,7 +167,7 @@ async function waitForHotkey(_: any, win: BrowserWindow): Promise<void> {
             // Push the hotkey event.
             win.webContents.send("config:hotkey", {
                 modifiers: modifiers,
-                key: s
+                key: s,
             });
         };
         iohook.on("keydown", listener);
@@ -282,5 +282,5 @@ export default {
     validatedFileOpen, validatedFolderOpen, validatedUrlOpen,
     defaultFilePath, openFolder, waitForHotkey, unwaitForHotkey,
     openOAuth2Flow, cancelOAuth2Flow: cancelOAuth2FlowHook,
-    getCommits, destroyConfig, getSecretConfigKeys
+    getCommits, destroyConfig, getSecretConfigKeys,
 } as {[key: string]: (data: any, win: BrowserWindow) => Promise<any>};

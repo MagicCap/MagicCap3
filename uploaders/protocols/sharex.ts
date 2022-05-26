@@ -122,7 +122,7 @@ const validateSxcu = (sxcuRaw: any): SXCU => {
         Headers: getStringStringObj("Headers", true),
         RegexList: getStringArray("RegexList", true),
         Parameters: undefined,
-        RequestMethod: undefined
+        RequestMethod: undefined,
     };
 
     // Handle request method.
@@ -351,7 +351,7 @@ export default async (body: Buffer, filename: string, sxcuRaw: any): Promise<str
         const form = new FormData();
         form.append(sxcu.FileFormName, body, {
             contentType: ((await fromBuffer(body)) || {mime: "application/octet-stream"}).mime,
-            filename
+            filename,
         });
         body = form.getBuffer();
         const formHeaders = form.getHeaders();
@@ -362,7 +362,7 @@ export default async (body: Buffer, filename: string, sxcuRaw: any): Promise<str
 
     // Create the request.
     const res = await fetch(requestUrl, {
-        body, headers, method: requestMethod
+        body, headers, method: requestMethod,
     });
     if (!res.ok) throw new Error(`Request returned status code ${res.status}.`);
 

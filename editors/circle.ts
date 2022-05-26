@@ -28,5 +28,5 @@ export const circle = (ctx: EditorRegisterCtx): (() => void) => ctx.register({
     title: "Circle",
     description: "Creates a circle on the image.",
     index: 2,
-    icon
+    icon,
 }, cb);

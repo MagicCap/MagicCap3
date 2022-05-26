@@ -12,5 +12,5 @@ export const imgur: Uploader = {
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://api.imgur.com/3/image", "POST",
         {type: "multipart", key: "image"}, {Authorization: "Client-ID 5a085a33c43d27c"},
-        config, "%data.link%", data, filename)
+        config, "%data.link%", data, filename),
 };

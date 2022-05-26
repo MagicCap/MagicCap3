@@ -4,7 +4,7 @@ module.exports = Object.assign({}, require("./webpack.common.js"), {
     output: {
         filename: "config.js",
         library: {
-            type: "commonjs"
-        }
-    }
+            type: "commonjs",
+        },
+    },
 });

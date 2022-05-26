@@ -12,6 +12,6 @@ export default ({editorsPtr}: EditedRegionsProps) => {
     // Return the items.
     return <>{editors.map((x, i) => <span style={{
         position: "fixed", zIndex: 1, left: x.left, top: x.top, backgroundSize: "cover",
-        width: x.width, height: x.height, backgroundImage: `url(${x.imgUrl})`
+        width: x.width, height: x.height, backgroundImage: `url(${x.imgUrl})`,
     }} key={i} />)}</>;
 };

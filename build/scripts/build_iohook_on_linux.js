@@ -30,7 +30,7 @@ if (process.platform === "linux") {
                 "--runtime=electron",
                 "--version=17.1.0",
                 "--abi=101",
-                "--upload=false"
+                "--upload=false",
             ]
         ).then(() => {
             rmSync("./node_modules/iohook/builds", {recursive: true, force: true});

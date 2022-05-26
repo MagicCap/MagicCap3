@@ -14,7 +14,7 @@ export default () => {
         ["Main", "main"],
         ["Uploaders", "uploaders_kernel"],
         ["Editors", "editors"],
-        ["Selector", "selector"]
+        ["Selector", "selector"],
     ];
 
     // Make all the parts.

@@ -45,7 +45,7 @@ export const uploadersInit = async () => {
             } catch (_) {
                 // Ignore this error.
             }
-        })()
+        })(),
     ]);
     if (localBundle !== lastBundle) {
         // In this situation, we should write our local bundle.

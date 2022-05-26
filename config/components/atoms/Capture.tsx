@@ -6,7 +6,8 @@ import { faClock, faClipboard, faFolder, faFile, faNetworkWired, faTrash } from 
 import Tooltip from "./Tooltip";
 import Debouncer from "../../utils/debouncer";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { validatedFileRemoval, validatedFileOpen, validatedFolderOpen, validatedUrlOpen } from "../../utils/main_api";
+// TODO: Support file removal
+import { validatedFileOpen, validatedFolderOpen, validatedUrlOpen } from "../../utils/main_api";
 
 type CaptureProps = {
     capture: Capture;

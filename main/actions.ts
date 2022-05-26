@@ -22,15 +22,15 @@ export const openRegionSelector = async () => {
         returnRegion: true,
         toolboxItems: [{
             icon: await crosshairPromise,
-            id: "__selector"
+            id: "__selector",
         } as ToolboxItem, ...getEditors().map(x => {
             const item: ToolboxItem = {
                 description: x.description,
                 icon: x.icon.toString("base64"),
-                id: x.id
+                id: x.id,
             };
             return item;
-        }) as ToolboxItem[]]
+        }) as ToolboxItem[]],
     });
 
     // Check if it was cancelled.
@@ -45,7 +45,7 @@ export const gifCapture = async () => {
     // Get the result from the selector.
     const result = await selector.use({
         returnRegion: false,
-        toolboxItems: []
+        toolboxItems: [],
     });
 
     // Check if it was cancelled.
@@ -98,7 +98,7 @@ export const uploadTo = async (uploaderId: string) => {
     // Open the dialog box.
     const ret = await dialog.showOpenDialog({
         title: "Select a file...",
-        properties: ["openFile", "multiSelections"]
+        properties: ["openFile", "multiSelections"],
     });
 
     // Run the upload function.
@@ -137,7 +137,7 @@ export const uploadTo = async (uploaderId: string) => {
                 const notification = new Notification({
                     title: "MagicCap",
                     body: `Succesfully uploaded file to ${uploader.name}.`,
-                    urgency: "critical"
+                    urgency: "critical",
                 });
 
                 // Handle clicks.

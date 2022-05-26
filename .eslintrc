@@ -11,6 +11,7 @@
         "node": true,
         "es6": true
     },
+    "ignorePatterns": ["**/bundles/*", "**/dist/*"],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
@@ -24,6 +25,6 @@
         "@typescript-eslint/no-non-null-assertion": 0, // reason: I don't even get why this is a rule, if it's a big issue, should be an exception
         "prefer-const": 0, // reason: doesn't seem to play nicely with react states
         "semi": "error", // reason: remove code ambiguity
-        "comma-dangle": "error" // reason: make diffs cleaner
+        "comma-dangle": ["error", "always-multiline"] // reason: make diffs cleaner
     }
 }

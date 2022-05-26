@@ -38,7 +38,7 @@ export default () => {
                     filename: x.filename as string,
                     success: x.success === 1,
                     url: x.url as string,
-                    timestamp: x.timestamp as number
+                    timestamp: x.timestamp as number,
                 };
             });
             setCaptures(captures);

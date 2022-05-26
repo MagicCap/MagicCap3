@@ -14,7 +14,7 @@ export const rlme: Uploader = {
             name: "Token",
             type: "password",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "rlme_domain",
@@ -22,11 +22,11 @@ export const rlme: Uploader = {
             type: "text",
             required: true,
             default: "ratelimited.me",
-            secret: false
-        }
+            secret: false,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://api.ratelimited.me/upload/pomf?key={rlme_token}", "POST",
         {type: "multipart", key: "files[]"}, undefined,
-        config, "https://{rlme_domain}/%files.0.url%", data, filename)
+        config, "https://{rlme_domain}/%files.0.url%", data, filename),
 };

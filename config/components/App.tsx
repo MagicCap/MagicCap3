@@ -13,7 +13,7 @@ export default () => {
     // Defines the components.
     const components = [
         Captures, Uploaders, FileSaving,
-        Hotkeys, General
+        Hotkeys, General,
     ];
 
     // Get the displayed component.

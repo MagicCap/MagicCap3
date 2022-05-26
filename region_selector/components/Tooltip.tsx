@@ -9,7 +9,7 @@ export default ({tooltip}: TooltipProps) => {
     return <span style={{
         top: tooltip.top, left: tooltip.left, position: "fixed", zIndex: 100,
         backgroundColor: "black", color: "white", padding: "5px", marginTop: "5px",
-        borderRadius: "10%", fontFamily: "Arial"
+        borderRadius: "10%", fontFamily: "Arial",
     }} aria-hidden={true}>
         {tooltip.text}
     </span>;

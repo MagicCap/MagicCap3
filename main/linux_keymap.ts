@@ -103,5 +103,5 @@ export default {
     108: "Cursor Down",
     106: "Cursor Right",
     82: "0",
-    83: "."
+    83: ".",
 } as {[key: number]: string};

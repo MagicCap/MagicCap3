@@ -7,7 +7,7 @@ import { BaseEditorCtx, callEditor } from "./editors";
 import {
     SelectorDone, SelectorBaseConfig, SelectorScreenSpecificConfig,
     EditorDone, EditorCtx, AnnouncementPayload, SelectorResult,
-    BundleBlob
+    BundleBlob,
 } from "../sharedTypes";
 import sharp from "sharp";
 import { homedir } from "os";
@@ -35,7 +35,7 @@ export const selectorInit = async () => {
             } catch (_) {
                 // Ignore this error.
             }
-        })()
+        })(),
     ]);
     if (localBundle !== lastBundle) {
         // In this situation, we should write our local bundle.
@@ -89,8 +89,8 @@ class SelectorManager {
                     show: false,
                     webPreferences: {
                         nodeIntegration: true,
-                        contextIsolation: false
-                    }
+                        contextIsolation: false,
+                    },
                 });
                 const uuid = v4();
                 selector.loadURL(`file://${join(homedir(), ".magiccap")}/selector.html#${uuid}`);
@@ -177,11 +177,11 @@ class SelectorManager {
                         show: false,
                         webPreferences: {
                             nodeIntegration: true,
-                            contextIsolation: false
+                            contextIsolation: false,
                         },
-                        backgroundColor: "#000000"
+                        backgroundColor: "#000000",
                     }),
-                    uuid: v4()
+                    uuid: v4(),
                 };
                 if (!win) {
                     // Ok fuck it, this is actually bad. This should never be hit due to the resyncing.
@@ -282,7 +282,7 @@ class SelectorManager {
                     displayBounds: d.bounds,
                     scale: d.scaleFactor,
                     notch,
-                    ...config
+                    ...config,
                 } as SelectorScreenSpecificConfig);
 
                 // Return the window and callbacks.
@@ -334,7 +334,7 @@ class SelectorManager {
                 return {
                     input: x.buf,
                     left: Math.floor(x.left * d.scaleFactor),
-                    top: Math.floor(x.top * d.scaleFactor)
+                    top: Math.floor(x.top * d.scaleFactor),
                 };
             })).toBuffer();
         }
@@ -344,7 +344,7 @@ class SelectorManager {
             width: reply.width * d.scaleFactor,
             height: reply.height * d.scaleFactor,
             top: reply.relativeTop * d.scaleFactor,
-            left: reply.relativeLeft * d.scaleFactor
+            left: reply.relativeLeft * d.scaleFactor,
         };
         const result = {
             display: d,
@@ -353,8 +353,8 @@ class SelectorManager {
                 width: reply.width,
                 height: reply.height,
                 top: reply.relativeTop + d.bounds.y,
-                left: reply.relativeLeft + d.bounds.x
-            }
+                left: reply.relativeLeft + d.bounds.x,
+            },
         } as SelectorResult;
         if (config.returnRegion) {
             // In this case, we should use sharp to crop the image.

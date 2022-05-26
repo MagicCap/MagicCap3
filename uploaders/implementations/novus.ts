@@ -14,11 +14,11 @@ export const novus: Uploader = {
             name: "Token",
             type: "password",
             required: true,
-            secret: true
-        }
+            secret: true,
+        },
     ],
     upload: (config: Map<string, any>, data: Buffer, filename: string) => http(
         "https://lunus.xyz/api/upload", "POST",
         {type: "multipart", key: "file"}, {Authorization: "Bearer {novus_token}"},
-        config, "%url%", data, filename)
+        config, "%url%", data, filename),
 };

@@ -16,5 +16,5 @@ export const blur = (ctx: EditorRegisterCtx): (() => void) => ctx.register({
     title: "Blur",
     description: "Allows you to blur the specified region.",
     index: 0,
-    icon
+    icon,
 }, cb);

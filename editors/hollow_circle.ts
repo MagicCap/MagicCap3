@@ -28,5 +28,5 @@ export const hollowCircle = (ctx: EditorRegisterCtx): (() => void) => ctx.regist
     title: "Hollow Circle",
     description: "Creates a hollow circle on the image.",
     index: 3,
-    icon
+    icon,
 }, cb);

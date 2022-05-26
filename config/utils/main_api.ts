@@ -16,7 +16,7 @@ export const writeConfig = async (changes: {[key: string]: JSONValue | undefined
     }
     await mainRequest({type: "writeConfig", data: {
         rem: Object.keys(changes).filter(x => changes[x] === undefined),
-        set: o
+        set: o,
     }});
 };
 

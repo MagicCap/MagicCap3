@@ -90,7 +90,7 @@ export default ({setCurrentlySelected}: GeneralProps) => {
             options={[
                 "Do nothing",
                 "Write the image to the clipboard",
-                "Write the URL to the clipboard"
+                "Write the URL to the clipboard",
             ]}
         />
 

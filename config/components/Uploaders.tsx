@@ -64,7 +64,7 @@ const UploaderList = ({setUploader}: {setUploader: (obj: {id: string; u: JSONabl
                 <UploaderButton
                     uploader={uploader.uploader}
                     onClick={() => setUploader({
-                        id: uploader.id, u: uploader.uploader
+                        id: uploader.id, u: uploader.uploader,
                     })}
                 />{" "}
             </React.Fragment>);

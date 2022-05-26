@@ -90,7 +90,7 @@ Object.keys(files).forEach(key => {
     form.append(key, files[key], {
         contentType: "application/octet-stream",
     });
-})
+});
 form.append("metadata", JSON.stringify({
     darwinCdnUrl, commitHash, coreHash, updateType,
 }), {contentType: "application/json"});

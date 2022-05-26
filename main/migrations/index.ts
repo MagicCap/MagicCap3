@@ -6,10 +6,10 @@ import * as MigrateFrom2 from "./migrate_from_2";
 
 // Defines application migrations. These are ran in order before the application starts.
 export const applicationMigrations = [
-    MigrateFrom2.applicationMigration
+    MigrateFrom2.applicationMigration,
 ] as (() => void)[];
 
 // Defines database migrations. These are ran in order after the database is initialised.
 export const databaseMigrations = [
-    MigrateFrom2.databaseMigration
+    MigrateFrom2.databaseMigration,
 ] as ((database: ConfigInterface) => void)[];

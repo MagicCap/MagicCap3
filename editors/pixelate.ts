@@ -16,5 +16,5 @@ export const pixelate = (ctx: EditorRegisterCtx): (() => void) => ctx.register({
     title: "Pixelate",
     description: "Allows you to pixelate the specified region.",
     index: 1,
-    icon
+    icon,
 }, cb);

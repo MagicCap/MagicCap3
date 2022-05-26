@@ -11,7 +11,7 @@ makeUniversalApp({
     x64AppPath: resolve("bundles/MagicCap-darwin-x64/MagicCap.app"),
     arm64AppPath: resolve("bundles/MagicCap-darwin-arm64/MagicCap.app"),
     outAppPath: resolve("bundles/MagicCap.app"),
-    copyUniqueMachO: true
+    copyUniqueMachO: true,
 }).then(() => {
     rmdirSync("bundles/MagicCap-darwin-x64", {recursive: true});
     rmdirSync("bundles/MagicCap-darwin-arm64", {recursive: true});

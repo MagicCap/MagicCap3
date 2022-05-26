@@ -15,7 +15,7 @@ export const sftpImpl: Uploader = {
             name: "SFTP Server Hostname",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "sftp_port",
@@ -25,14 +25,14 @@ export const sftpImpl: Uploader = {
             max: 65535,
             default: 22,
             required: true,
-            secret: false
+            secret: false,
         },
         {
             key: "sftp_username",
             name: "SFTP Username",
             type: "text",
             required: true,
-            secret: true
+            secret: true,
         },
         {
             key: "sftp_auth_method",
@@ -50,8 +50,8 @@ export const sftpImpl: Uploader = {
                         type: "file",
                         extensions: ["pem"],
                         required: false,
-                        secret: true
-                    }
+                        secret: true,
+                    },
                 ],
                 "Password Authentication": [
                     {
@@ -59,10 +59,10 @@ export const sftpImpl: Uploader = {
                         name: "SFTP Password",
                         type: "password",
                         required: false,
-                        secret: true
-                    }
-                ]
-            }
+                        secret: true,
+                    },
+                ],
+            },
         },
         {
             key: "sftp_directory",
@@ -70,15 +70,15 @@ export const sftpImpl: Uploader = {
             type: "text",
             default: "/",
             required: true,
-            secret: false
+            secret: false,
         },
         {
             key: "sftp_domain",
             name: "SFTP Base URL",
             type: "url",
             required: true,
-            secret: false
-        }
+            secret: false,
+        },
     ],
     upload: async (config: Map<string, any>, data: Buffer, filename: string) => {
         // Handle the authentication method.
@@ -98,5 +98,5 @@ export const sftpImpl: Uploader = {
             config.get("sftp_hostname") as string, config.get("sftp_port") as number,
             config.get("sftp_username") as string, x, config.get("sftp_directory") as string,
             filename, data, config.get("sftp_domain") as string);
-    }
+    },
 };
