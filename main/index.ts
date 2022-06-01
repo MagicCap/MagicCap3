@@ -1,3 +1,6 @@
+// This is for things that *have* to happen before the app is loaded.
+// Most initialization should be done in init.ts.
+
 // Import the exception handler.
 import "./exception_handler";
 

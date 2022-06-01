@@ -108,25 +108,70 @@ const initializeExpress = (app: Application) => {
         w.cb(urlParams);
 
         // Send the HTML response.
-        res.status(200).send(`<p>Please close this tab and return to MagicCap.</p><script>window.close();</script>`);
+        res.status(200).send("<p>Please close this tab and return to MagicCap.</p><script>window.close();</script>");
     });
 };
 
-const makeGlobalExpressListener = () => {
+const makeGlobalExpressListener = async () => {
+    let localMiddleware: ((req: http.IncomingMessage) => boolean) | undefined;
     const s = http.createServer((req, res) => {
+        if (localMiddleware) {
+            // Make sure this address is allowed if the middleware is active.
+            if (!localMiddleware(req)) return;
+        }
         // @ts-ignore
         const s = globalThis.__MAGICCAP_EXPRESS__;
         if (s) s.handle(req, res);
     });
+    const bindResultAsync = () => new Promise((res, rej) => {
+        let listeningHnd: () => void;
+        const errorHnd = (err: Error) => {
+            s.removeListener("listening", listeningHnd);
+            rej(err);
+        };
+        listeningHnd = () => {
+            s.removeListener("error", errorHnd);
+            res(null);
+        };
+        s.once("error", errorHnd);
+        s.once("listening", listeningHnd);
+    });
     try {
+        let p = bindResultAsync();
         s.listen(61223, "127.0.0.1");
+        try {
+            await p;
+        } catch (_) {
+            // For some reason, macOS seems to have random TCP/IP tantrums.
+            // In this event, we should try binding to 0.0.0.0 with some middleware
+            // to prevent bad things.
+            localMiddleware = req => {
+                const addr = req.socket.address();
+                // @ts-ignore: TypeScript hates this because addr can be {}, but the check
+                // below will still fail because that would make it undefined... lol
+                if (!["127.0.0.1", "::1"].includes(addr.address)) {
+                    // Some random address. Ignore this.
+                    req.socket.destroy();
+                    return false;
+                }
+                return true;
+            };
+            p = bindResultAsync();
+            s.listen(61223);
+            await p;
+            console.log(
+                "We need to bind port 61223 to a wildcard because we can't bind to 127.0.0.1. This is " +
+                "a known stupid macOS bug (unknown on Linux though), but don't worry, there's middleware " +
+                "to make this secure.");
+        }
         return true;
-    } catch (_) {
+    } catch (err) {
+        console.error(`Internal API failed to load!: ${err}`);
         return false;
     }
 };
 
-export default () => {
+export default async () => {
     // Create the app.
     const app = express();
 
@@ -136,7 +181,7 @@ export default () => {
     // Make the web socket if required and mount the web server.
     // @ts-ignore
     if (!globalThis.__MAGICCAP_EXPRESS__) {
-        if (!makeGlobalExpressListener()) {
+        if (!await makeGlobalExpressListener()) {
             // If this fails, we should return. This is because we don't want to
             // give the impression during future updates that there is a running
             // server.

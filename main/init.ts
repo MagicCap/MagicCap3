@@ -47,10 +47,10 @@ app.whenReady().then(async () => {
     await selector.ensureInit();
 
     // Initialize auto-update.
-    await autoupdate();
+    autoupdate();
 
     // Load the web server.
-    webServer();
+    await webServer();
 
     // Load the tray.
     tray();

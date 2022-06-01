@@ -14,11 +14,14 @@
     "build:copy": "cp region_selector/selector.html dist/selector.html && cp config/config.html dist/config.html && cp config/config_preload.js dist/config_preload.js",
     "dev-build:go": "cd gif && go build -o ../dist/gif && cd ../inplace_upgrade && go build -o ../dist/inplace_upgrade && cd ../sftp && go build -o ../dist/sftp",
     "build:hash": "(git rev-parse HEAD || echo 'undefined') > dist/commit_hash",
-    "dev-run": "rimraf dist && npm run dev-build:js && npm run build:copy && npm run dev-build:go && npm run build:native && npm run build:hash && ELECTRON_ENABLE_LOGGING=1 WEBPACK_ENV=development NODE_OPTIONS=--enable-source-maps electron ."
+    "dev-run": "rimraf dist && npm run dev-build:js && npm run build:copy && npm run dev-build:go && npm run build:native && npm run build:hash && ELECTRON_ENABLE_LOGGING=1 WEBPACK_ENV=development NODE_OPTIONS=--enable-source-maps MAGICCAP_NO_AUTOUPDATE=1 electron ."
   },
   "author": "MagicCap Development Team",
   "license": "MPL-2.0",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.36",
+    "@fortawesome/free-solid-svg-icons": "5.15.4",
+    "@fortawesome/react-fontawesome": "0.1.16",
     "better-sqlite3": "^7.4.3",
     "sharp": "^0.29.3",
     "nan": "^2.14.0"
@@ -31,9 +34,6 @@
     "@typescript-eslint/parser": "^5.13.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@electron/universal": "^1.1.0",
-    "@fortawesome/fontawesome-svg-core": "1.2.36",
-    "@fortawesome/free-solid-svg-icons": "5.15.4",
-    "@fortawesome/react-fontawesome": "0.1.16",
     "@types/better-sqlite3": "^7.4.0",
     "@types/jsonpath": "^0.2.0",
     "@types/node-fetch": "^2.5.12",

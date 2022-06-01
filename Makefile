@@ -7,13 +7,7 @@ ELECTRON_PACKAGER_LINUX_ARGS := --icon assets/icon.icns
 
 YARN := npm_config_yes=true npx yarn
 
-.PHONY: yarn lint build package darwin-app-sign update-pusher darwin-s3-inners-push darwin-ci linux-ci dev
-
-yarn:
-	$(YARN)
-
-lint:
-	$(YARN) run lint
+.PHONY: build yarn lint build package darwin-app-sign update-pusher darwin-s3-inners-push darwin-ci linux-ci dev install
 
 build:
 	# Build all of the assets and JavaScript.
@@ -197,3 +191,9 @@ linux-ci:
 dev:
 	$(YARN)
 	$(YARN) run dev-run
+
+yarn:
+	$(YARN)
+
+lint:
+	$(YARN) run lint
