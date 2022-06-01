@@ -8,6 +8,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Linux development dependencies
+        run: sudo apt update && sudo apt install -y libappindicator3-dev libxtst-dev libpng++-dev libxkbcommon-x11-0 xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libx11-dev
       - name: Run yarn
         run: make yarn
       - name: Run lint
