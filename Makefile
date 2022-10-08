@@ -7,7 +7,9 @@ ELECTRON_PACKAGER_LINUX_ARGS := --icon assets/icon.icns
 
 YARN := npm_config_yes=true npx yarn
 
-.PHONY: build yarn lint build package darwin-app-sign update-pusher darwin-s3-inners-push darwin-ci linux-ci dev install
+.PHONY: build yarn lint build package darwin-app-sign update-pusher darwin-s3-inners-push darwin-ci linux-ci dev install native-build
+
+.DEFAULT_GOAL := build
 
 build:
 	# Build all of the assets and JavaScript.
@@ -197,3 +199,18 @@ yarn:
 
 lint:
 	$(YARN) run lint
+
+ELECTRON_VERSION := 19.1.1
+
+native-build:
+	# Build libscreenshot.
+	cd libscreenshot && \
+	HOME=~/.electron-gyp ../node_modules/.bin/node-gyp configure --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --verbose && \
+	HOME=~/.electron-gyp ../node_modules/.bin/node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers && \
+	mv build ../dist/libscreenshot
+
+	# Build libnotch.
+	cd libnotch && \
+	HOME=~/.electron-gyp ../node_modules/.bin/node-gyp configure --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --verbose && \
+	HOME=~/.electron-gyp ../node_modules/.bin/node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers && \
+	mv build ../dist/libnotch

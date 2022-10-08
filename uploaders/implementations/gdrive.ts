@@ -118,7 +118,7 @@ export const gdrive: Uploader = {
             version: "v3",
             auth: oauth,
         });
-        const mimeType = mime.lookup(filename.split(".").pop()!);
+        const mimeType = mime.getExtension(filename.split(".").pop()!) || undefined;
 
         // Handle uploading the file.
         const driveResponse = await d.files.create({

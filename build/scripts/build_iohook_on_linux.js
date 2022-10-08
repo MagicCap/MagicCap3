@@ -22,20 +22,21 @@ function exitCatch(err) {
 }
 
 if (process.platform === "linux") {
+    const abi = 106;
     copySync("./node_modules/iohook", "./node_modules/iohook_rebuilt");
     exec("./node_modules/iohook_rebuilt", "npm", ["i"]).then(() =>
         exec(
             "./node_modules/iohook_rebuilt", "node", [
                 "build.js",
                 "--runtime=electron",
-                "--version=17.1.0",
-                "--abi=101",
+                "--version=19.1.1",
+                `--abi=${abi}`,
                 "--upload=false",
             ]
         ).then(() => {
             rmSync("./node_modules/iohook/builds", {recursive: true, force: true});
-            mkdirSync(`./node_modules/iohook/builds/electron-v101-linux-${process.arch}`, {recursive: true});
-            moveSync("./node_modules/iohook_rebuilt/build", `./node_modules/iohook/builds/electron-v101-linux-${process.arch}/build`);
+            mkdirSync(`./node_modules/iohook/builds/electron-v${abi}-linux-${process.arch}`, {recursive: true});
+            moveSync("./node_modules/iohook_rebuilt/build", `./node_modules/iohook/builds/electron-v${abi}-linux-${process.arch}/build`);
             rmSync("./node_modules/iohook_rebuilt", {recursive: true, force: true});
         })
     ).catch(exitCatch);
