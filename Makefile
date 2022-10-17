@@ -2,6 +2,8 @@ UNAME_S := $(shell uname -s)
 NODE_ARCH := $(shell node -e 'console.log(process.arch)' | tr -d '\n')
 GO_ARCH := $(shell dpkg --print-architecture | tr -d '\n')
 
+ELECTRON_VERSION := 19.1.1
+
 ELECTRON_PACKAGER_DARWIN_ARGS := --icon assets/icon.icns --ignore "Makefile|build_tmp" --app-category-type "public.app-category.productivity" --app-bundle-id "org.magiccap.magiccap"
 ELECTRON_PACKAGER_LINUX_ARGS := --icon assets/icon.icns
 
@@ -48,13 +50,13 @@ ifeq ($(UNAME_S),Darwin)
 	cd sftp && CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build -o ../dist/sftp
 
 	# Build libscreenshot for amd64.
-	cd libscreenshot && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=17.1.0 --dist-url=https://electronjs.org/headers --arch=x64
+	cd libscreenshot && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --arch=x64
 	mkdir -p dist/libscreenshot/Release
 	mv libscreenshot/build/Release/screenshot.node dist/libscreenshot/Release
 	rm -rf libscreenshot/build
 
 	# Build libnotch for amd64.
-	cd libnotch && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=17.1.0 --dist-url=https://electronjs.org/headers --arch=x64
+	cd libnotch && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --arch=x64
 	mkdir -p dist/libnotch/Release
 	mv libnotch/build/Release/notch.node dist/libnotch/Release
 	rm -rf libnotch/build
@@ -82,14 +84,14 @@ ifeq ($(UNAME_S),Darwin)
 
 	# Build libscreenshot for arm64.
 	rm -rf dist/libscreenshot
-	cd libscreenshot && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=17.1.0 --dist-url=https://electronjs.org/headers --arch=arm64
+	cd libscreenshot && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --arch=arm64
 	mkdir -p dist/libscreenshot/Release
 	mv libscreenshot/build/Release/screenshot.node dist/libscreenshot/Release
 	rm -rf libscreenshot/build
 
 	# Build libnotch for arm64.
 	rm -rf dist/libnotch
-	cd libnotch && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=17.1.0 --dist-url=https://electronjs.org/headers --arch=arm64
+	cd libnotch && HOME=~/.electron-gyp npm_config_yes=true npx node-gyp rebuild --runtime=electron --target=$(ELECTRON_VERSION) --dist-url=https://electronjs.org/headers --arch=arm64
 	mkdir -p dist/libnotch/Release
 	mv libnotch/build/Release/notch.node dist/libnotch/Release
 	rm -rf libnotch/build
@@ -199,8 +201,6 @@ yarn:
 
 lint:
 	$(YARN) run lint
-
-ELECTRON_VERSION := 19.1.1
 
 native-build:
 	# Build libscreenshot.
