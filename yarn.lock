@@ -3521,9 +3521,9 @@ ini@^1.3.4, ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
-"iohook@github:JakeMakesStuff/iohook#master":
+"iohook@github:JakeMakesStuff/iohook#fea6a1839057df93a4a245396eb2b59d108ebf09":
   version "0.9.3"
-  resolved "https://codeload.github.com/JakeMakesStuff/iohook/tar.gz/1d55b37d951bf3037e08a9b71054d35b9c9b3278"
+  resolved "https://codeload.github.com/JakeMakesStuff/iohook/tar.gz/fea6a1839057df93a4a245396eb2b59d108ebf09"
   dependencies:
     nugget "^2.0.1"
     pump "^1.0.3"

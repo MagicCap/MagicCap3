@@ -25,7 +25,7 @@
     "nan": "^2.14.0"
   },
   "optionalDependencies": {
-    "iohook": "github:JakeMakesStuff/iohook#master"
+    "iohook": "github:JakeMakesStuff/iohook#fea6a1839057df93a4a245396eb2b59d108ebf09"
   },
   "devDependencies": {
     "@googleapis/drive": "2.2.0",

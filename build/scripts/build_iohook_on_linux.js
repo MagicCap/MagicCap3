@@ -32,6 +32,7 @@ if (process.platform === "linux") {
                 "--version=19.1.1",
                 `--abi=${abi}`,
                 "--upload=false",
+                "--openssl_fips=''",
             ]
         ).then(() => {
             rmSync("./node_modules/iohook/builds", {recursive: true, force: true});
